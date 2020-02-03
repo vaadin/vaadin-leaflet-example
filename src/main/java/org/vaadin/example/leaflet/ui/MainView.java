@@ -9,6 +9,7 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
@@ -40,6 +41,9 @@ public class MainView extends VerticalLayout {
         this.service = service;
 
         setSizeFull();
+
+        H3 title = new H3("Welcome to the best fishing spots in the world!");
+        add(title);
 
         // Create the map and add it to this view
         map = new LeafletMap();
