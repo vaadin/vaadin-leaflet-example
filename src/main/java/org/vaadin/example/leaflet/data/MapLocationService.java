@@ -36,10 +36,14 @@ public class MapLocationService {
 
     public void addSpot(MapLocation spot) {
 
-        spots.add(spot);
+        // protect concurrent access since MapLocationService is a singleton
+        synchronized (spots) {
 
-        if (spots.size() > 100) {
-            spots.remove(0);
+            spots.add(spot);
+
+            if (spots.size() > 100) {
+                spots.remove(0);
+            }
         }
     }
 }

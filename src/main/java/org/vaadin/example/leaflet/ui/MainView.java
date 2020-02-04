@@ -21,10 +21,8 @@ import com.vaadin.flow.router.Route;
 /**
  * Main (and only) view in this demo app.
  * <p>
- * It demonstrates how to create our custom {@link LeafletMap} component, in the
- * same way you'd use any built-in Vaadin component.
- *
- * TODO update README
+ * Demonstrates how to use our custom {@link LeafletMap} component, in the same
+ * way you'd use any built-in Vaadin component.
  *
  * @see LeafletMap
  */
@@ -60,6 +58,10 @@ public class MainView extends VerticalLayout {
         map.addMarkersAndZoom(service.getAll());
     }
 
+    /**
+     * Called when the user clicks the map. Creates a {@link Dialog} for the user to
+     * input further data and to save the data.
+     */
     private void mapClicked(MapClickEvent event) {
 
         // Create a dialog for adding a marker
@@ -85,6 +87,9 @@ public class MainView extends VerticalLayout {
         popupLayout.add(coords, markerName, saveMarker);
     }
 
+    /**
+     * Save a new marker in the backend and add it to the map
+     */
     private void saveMarkerAndRefresh(String name, double latitude, double longitude) {
         MapLocation spot = new MapLocation(latitude, longitude, name);
         service.addSpot(spot);
