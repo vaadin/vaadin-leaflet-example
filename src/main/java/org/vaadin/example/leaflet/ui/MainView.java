@@ -13,6 +13,7 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -42,6 +43,9 @@ public class MainView extends VerticalLayout {
 
         H3 title = new H3("Welcome to the best fishing spots in the world!");
         add(title);
+
+        Span subtitle = new Span("You can add a marker by clicking on the map.");
+        add(subtitle);
 
         // Create the map and add it to this view
         map = new LeafletMap();
@@ -84,7 +88,15 @@ public class MainView extends VerticalLayout {
         saveMarker.addClickShortcut(Key.ENTER);
         saveMarker.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
-        popupLayout.add(coords, markerName, saveMarker);
+        Button cancel = new Button("Cancel", e -> popup.close());
+        cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
+        cancel.getStyle().set("margin-left", "auto");
+
+        HorizontalLayout buttons = new HorizontalLayout(saveMarker, cancel);
+        buttons.setWidthFull();
+        buttons.setMargin(false);
+
+        popupLayout.add(coords, markerName, buttons);
     }
 
     /**
