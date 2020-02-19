@@ -68,7 +68,8 @@ public class MainView extends VerticalLayout {
      */
     private void mapClicked(MapClickEvent event) {
 
-        // Create a dialog for adding a marker
+        // Create a dialog for adding a marker. This is not part of the custom
+        // component, just normal Vaadin stuff
 
         VerticalLayout popupLayout = new VerticalLayout();
         popupLayout.setMargin(false);

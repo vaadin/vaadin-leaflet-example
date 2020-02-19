@@ -219,7 +219,7 @@ public class LeafletMap extends PolymerTemplate<TemplateModel> implements HasSiz
      * <p>
      * This event is fired client-side, in leaflet-map.js in the method
      * _markerClicked(id) and received in the constructor of the main class
-     * {@link LeafletMap#LeafletMap(LeafletMap, boolean, Integer)}
+     * {@link LeafletMap#LeafletMap()}
      * <p>
      * This class needs to be public so that Vaadin can use it internally, but isn't
      * meant for public use.
