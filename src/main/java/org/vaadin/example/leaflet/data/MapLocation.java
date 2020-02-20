@@ -14,7 +14,6 @@ public class MapLocation {
     }
 
     public MapLocation(double latitude, double longitude, String name) {
-        super();
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
