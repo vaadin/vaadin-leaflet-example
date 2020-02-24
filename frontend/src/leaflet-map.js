@@ -25,7 +25,6 @@ class LeafletMap extends ThemableMixin(PolymerElement) {
         position: relative;
         display: block;
         flex: 1 1 0;
-        margin: var(--lumo-space-s);
     }
     
     #map {
