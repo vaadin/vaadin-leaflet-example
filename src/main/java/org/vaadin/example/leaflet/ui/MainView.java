@@ -40,12 +40,14 @@ public class MainView extends VerticalLayout {
         this.service = service;
 
         setSizeFull();
+        setPadding(false);
+        setSpacing(false);
 
         H3 title = new H3("Welcome to the best fishing spots in the world!");
-        add(title);
-
         Span subtitle = new Span("You can add a marker by clicking on the map.");
-        add(subtitle);
+        VerticalLayout titleLayout = new VerticalLayout(title, subtitle);
+        titleLayout.setSpacing(false);
+        add(titleLayout);
 
         // Create the map and add it to this view
         map = new LeafletMap();
@@ -72,14 +74,15 @@ public class MainView extends VerticalLayout {
         // component, just normal Vaadin stuff
 
         VerticalLayout popupLayout = new VerticalLayout();
-        popupLayout.setMargin(false);
+        popupLayout.setPadding(false);
 
         Dialog popup = new Dialog(popupLayout);
         popup.open();
 
-        Span coords = new Span(String.format("You selected the following coordinates: %f, %f", event.getLatitude(), event.getLongitude()));
+        Span coords = new Span(String.format("You selected the following coordinates: %f %f", event.getLatitude(), event.getLongitude()));
 
         TextField markerName = new TextField("What is this spot called?");
+        markerName.setWidthFull();
         markerName.focus();
 
         Button saveMarker = new Button("Save", VaadinIcon.CHECK.create(), e -> {
