@@ -1,6 +1,4 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js'; // import Web Component helpers
-import {ThemableMixin} from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin'; // import Vaadin theme helpers
-
 import 'leaflet'; // import from NPM
 
 /**
@@ -10,7 +8,7 @@ import 'leaflet'; // import from NPM
  * 
  * It extends ThemableMixin so that Vaadin styles can be applied easily (for instance in the margin style).
  */
-class LeafletMap extends ThemableMixin(PolymerElement) {
+class LeafletMap extends PolymerElement {
 
 	/**
 	 * This method creates the DOM for our web component. We define some styles and 
@@ -20,35 +18,10 @@ class LeafletMap extends ThemableMixin(PolymerElement) {
 	 */
     static get template() {
         return html`
-<style>
-    :host {
-        position: relative;
-        display: block;
-        flex: 1 1 0;
-    }
-    
-    #map {
-        width: 100%;
-        height: 100%;
-    }
-    
-    /* Override the default 400, 800, and 1000 z-indices so that a vaadin-dialog appears on top of the map */
-   
-    :host .leaflet-pane {
-        z-index: 10;
-    }
-    :host .leaflet-control {
-        z-index: 30;
-    }
-    :host .leaflet-top, :host .leaflet-bottom {
-        z-index: 50;
-    }
-    
-</style>
 
-<!-- This is the div the map will be rendered in -->
-<div id="map"></div>
-`;
+        	<!-- This is the div the map will be rendered in -->
+        	<div id="map"></div>
+        `;
     }
 
     /**
@@ -56,6 +29,30 @@ class LeafletMap extends ThemableMixin(PolymerElement) {
      */
     static get is() {
         return "leaflet-map"; // must match @Tag in the Java file
+    }
+    
+    /**
+     * The default for Polymer is to create a shadow root for each element. In this case, touch events will 
+     * conflict with Polymer helpers so we use regular (light) DOM instead.
+     */
+    _attachDom(dom){
+    	this.appendChild(dom); // don't create shadow root, just append the content
+    	return this;
+    }
+    
+    /**
+     * Again, we can't use Shadow DOM because it conflicts (see above). Here we check if this element is 
+     * used inside a shadow root without a <slot>.
+     */
+    connectedCallback() {
+    	super.connectedCallback();
+    	
+    	var element = this;
+        while(element.parentNode && (element = element.parentNode)) {
+            if(element instanceof ShadowRoot){
+                console.error("This element does not support shadow roots. Please use a <slot> for the element instead.", element);
+            }
+        }
     }
     
     /**
@@ -71,8 +68,10 @@ class LeafletMap extends ThemableMixin(PolymerElement) {
         this.map.dragging.enable();
         this.map.scrollWheelZoom.enable();
         
-        this.map.on('click', ev =>
-            this._mapClicked(ev) // ev is an event object (MouseEvent in this case)
+        // register click listener on map
+        this.map.on('click', mouseEvent => {
+            	this._mapClicked(mouseEvent); 
+        	}
         );
     }
     

@@ -1,0 +1,24 @@
+
+/* Basics styles for our app and layout */
+leaflet-map {
+    position: relative;
+    display: block;
+    flex: 1 1 0;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Override the default 400, 800, and 1000 z-indices so that a vaadin-dialog appears on top of the map */
+
+leaflet-map .leaflet-pane {
+    z-index: 10;
+}
+leaflet-map .leaflet-control {
+    z-index: 30;
+}
+leaflet-map .leaflet-top, leaflet-map .leaflet-bottom {
+    z-index: 50;
+}

@@ -48,8 +48,9 @@ import elemental.json.JsonArray;
 // Download the Leaflet JS files using NPM
 @NpmPackage(value = "leaflet", version = "1.6.0")
 
-// Include the necessary theme files from the Leaflet package
-@CssImport(value = "leaflet/dist/leaflet.css", themeFor = "leaflet-map")
+// Include the necessary theme files from the Leaflet package and our own additions
+@CssImport(value = "leaflet/dist/leaflet.css")
+@CssImport(value = "./src/leaflet.css")
 
 // Finally import our connector JS file (the '.' refers to the 'frontend' folder in the project root)
 @JsModule("./src/leaflet-map.js")
