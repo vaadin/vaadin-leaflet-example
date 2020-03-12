@@ -51,7 +51,7 @@ public class MainView extends VerticalLayout {
 
         // Create the map and add it to this view
         map = new LeafletMap();
-        map.setSizeFull();
+        map.setWidthFull();
         add(map);
 
         // Register for marker clicks
