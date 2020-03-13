@@ -43,11 +43,7 @@ public class MainView extends VerticalLayout {
         setPadding(false);
         setSpacing(false);
 
-        H3 title = new H3("Welcome to the best fishing spots in the world!");
-        Span subtitle = new Span("You can add a marker by clicking on the map.");
-        VerticalLayout titleLayout = new VerticalLayout(title, subtitle);
-        titleLayout.setSpacing(false);
-        add(titleLayout);
+        showIntro();
 
         // Create the map and add it to this view
         map = new LeafletMap();
@@ -62,6 +58,19 @@ public class MainView extends VerticalLayout {
 
         // Add all known markers to the map
         map.addMarkersAndZoom(service.getAll());
+    }
+
+    private void showIntro() {
+        H3 title = new H3("Welcome to the best fishing spots in the world!");
+        Span subtitle = new Span("You can add a marker by clicking anywhere on the map.");
+        Button ok = new Button("OK!", VaadinIcon.CHECK.create());
+        VerticalLayout titleLayout = new VerticalLayout(title, subtitle, ok);
+        titleLayout.setPadding(false);
+
+        Dialog introDialog = new Dialog(titleLayout);
+        introDialog.open();
+
+        ok.addClickListener(e -> introDialog.close());
     }
 
     /**
