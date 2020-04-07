@@ -2,6 +2,8 @@
 
 This project demonstrates how to integrate a 3rd party JS library (LeafletJS in this case) into a Vaadin application, as a custom web component.
 
+[![Vaadin 14 Leaflet Example](leaflet-example.png)](https://labs.vaadin.com/leaflet-example/)
+
 The integration can be found in two files, LeafletMap.java and leaflet-map.js. MainView.java is a Vaadin application that demonstrates how to use the component.
 
 ## Running the Application
