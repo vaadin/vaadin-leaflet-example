@@ -5,6 +5,7 @@ import org.vaadin.example.leaflet.data.MapLocation;
 import org.vaadin.example.leaflet.data.MapLocationService;
 import org.vaadin.example.leaflet.ui.LeafletMap.MapClickEvent;
 
+import com.vaadin.example.corner.VaadinCorner;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -58,6 +59,8 @@ public class MainView extends VerticalLayout {
 
         // Add all known markers to the map
         map.addMarkersAndZoom(service.getAll());
+
+        add(new VaadinCorner());
     }
 
     private void showIntro() {
