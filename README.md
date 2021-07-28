@@ -1,4 +1,4 @@
-# Project example for integrating a JS library with Vaadin 14+
+# Project example for integrating a JS library with Vaadin Flow
 
 This project demonstrates how to integrate a 3rd party JS library (LeafletJS in this case) into a Vaadin application, as a custom web component.
 
