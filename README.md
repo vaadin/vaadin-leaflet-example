@@ -1,3 +1,7 @@
+# ⚠️ This repository is deprecated
+
+**An up-to-date example of integrating a JS library (specifically LeafletJS) is available at [start.vaadin.com](https://start.vaadin.com/) (the Map view).**
+
 # Project example for integrating a JS library with Vaadin Flow
 
 This project demonstrates how to integrate a 3rd party JS library (LeafletJS in this case) into a Vaadin application, as a custom web component.
