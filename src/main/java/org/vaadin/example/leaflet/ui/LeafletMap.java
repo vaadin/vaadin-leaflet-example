@@ -39,14 +39,14 @@ import elemental.json.JsonArray;
  * <p>
  * LeafletJS documentation can be found here:
  * <p>
- * {@link https://leafletjs.com/reference-1.6.0.html}
+ * {@link https://leafletjs.com/reference-1.7.1.html}
  */
 
 // Assign a web component (html) tag name to our custom component since Leaflet doesn't provide it's own (it's not a Web Component)
 @Tag("leaflet-map")
 
 // Download the Leaflet JS files using NPM
-@NpmPackage(value = "leaflet", version = "1.6.0")
+@NpmPackage(value = "leaflet", version = "1.7.1")
 
 // Include the necessary theme files from the Leaflet package and our own additions
 @CssImport(value = "leaflet/dist/leaflet.css")
