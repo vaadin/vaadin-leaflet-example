@@ -1,6 +1,6 @@
 # ⚠️ This repository is deprecated
 
-**An up-to-date example of integrating a JS library (specifically LeafletJS) is available at [start.vaadin.com](https://start.vaadin.com/) (the Map view).**
+**An up-to-date example of integrating a JS/ES library you can use the [web component integration sample](https://github.com/vaadin/component-starter-flow). A map component is available at [start.vaadin.com](https://start.vaadin.com/) (select the Map view).**
 
 # Project example for integrating a JS library with Vaadin Flow
 
